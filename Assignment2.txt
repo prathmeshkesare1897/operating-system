@@ -1,0 +1,285 @@
+Q.1]
+
+
+for i in {1..10}
+do
+        mkdir a$i
+done
+==============//=======================
+Q.2]
+while(true)
+do
+        echo '1.find length'
+        echo '2.copying string'
+        echo '3.concate string'
+        echo '4.compare to string'
+        echo '5.reverse string'
+read str1
+read str2
+read option
+case $option in
+        1) echo ${#str1}
+                ;;
+        2) str2=$str1
+                echo $str2
+                ;;
+        3)echo $str1$str2
+                ;;
+        4)if [ $str1 == $str2]
+        then
+                echo "equal"
+
+        else
+                echo "not equal"
+
+        fi
+                ;;
+        5)echo $str1 | rev
+                ;;
+        *) exit;;
+esac
+done
+==============//==================================================
+
+
+Q.4] 
+
+echo $HOME
+echo $PATH
+echo $SHELL
+==============//===================================================
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Question.1]
+
+echo "Enter Year:"
+read y
+
+year=$y
+
+y=$(( $y % 4 ))
+if [ $y -eq 0 ]
+then
+            echo "$year is Leap Year!"
+    else
+                echo "$year is not a Leap Year!"
+fi
+======================//=================================
+Question.2]
+
+a)
+
+	echo 'Enter the no of Day : '
+	read day
+
+	if [ $day == 1 ]
+	then
+		echo 'Sunday'
+	elif [ $day == 2 ]
+	then
+		echo 'Monday'
+	elif [ $day == 3 ]
+	then
+		echo 'Tuesday'
+	elif [ $day == 4 ]
+	then
+		echo 'Wednesday'
+	elif [ $day == 5 ]
+	then
+		echo 'Thrusday'
+	elif [ $day == 6 ]
+	then
+		echo 'Friday'
+	elif [ $day == 7 ]
+	then
+		echo 'Saturday'
+	else
+		echo 'Invalid Entry'
+	fi
+
+b)
+echo "Enter the no"
+read daynum
+case $daynum in
+        1) echo "Monday";;
+        2) echo "Tuesday";;
+        3) echo "Wednessday";;
+        4) echo "Thursday";;
+        5) echo "Friday";;
+        6) echo "Saturday";;
+        7) echo "Sunday";;
+        *) echo "Invalid Input";;
+esac
+==============//================================================
+Question.3
+
+a)
+echo "Enter 1st number "
+read n1
+echo "Enter 2nd number"
+read n2
+echo "Enter 3rd number"
+read n3
+if [ $n1 -gt $n2 ] && [ $n1 -gt $n3 ];then
+        echo "$n1 is the greatest number"
+elif [ $n2 -gt $n1 ] && [ $n2 -gt $n3 ];then
+        echo "$n2 is the greatest number"
+else
+        echo "$n3 is the greatest"
+
+fi
+                                                                            
+
+                              
+b)
+echo "Enter 1st number"
+read n1
+echo "Enter 2nd number"
+read n2
+echo "Enter 3rd number"
+read n3
+avg()
+{
+        sum=`expr $n1 + $n2 + $n3`
+        avg=`expr $sum / 3`
+        echo "$avg"
+}
+
+avg
+
+
+Question.4]
+
+echo  "Enter numnber : "
+read n
+
+rem=$(( $n % 2 ))
+
+if [ $rem -eq 0 ]
+then
+          echo "$n is even number"
+  else
+            echo "$n is odd number"
+fi
+==============//=======================
+
+Question.6]
+
+b>
+echo sum of two no
+a=2
+b=3
+sum= expr $a + $b
+echo $sum
+
+echo product of two no
+a=2
+b=3
+product= expr $a \* $b
+
+-------------------------
+c>
+echo sum
+a=4
+b=2
+echo "$a+$b" | bc
+echo product
+ a=4
+ b=2
+ echo "$a*$b" | bc
+~                  
+-----------------------------------
+Question.7]
+
+echo "Enter limit : "
+	read num
+	f1=0
+	f2=1
+	echo "Fibonacci series of $num terms is : "
+	for((i=0;i<num;i++))
+	do
+		echo "$f1 "
+		sum=$((f1+f2))
+		f1=$f2
+		f2=$sum
+	done
+===================//======================================================
+Question.8]
+echo "enter string : "
+	read str
+	copy=$str
+	len=${#copy}
+	echo "Length of string is : $len"
+	echo "Reverse string ---------"
+	rev=""
+	for(( i=$len-1 ; i >=0 ;--i ))
+	do
+	#       echo ${str[$i]}
+		rev="$rev${str:$i:1}"
+	#       echo "${str:$i:1}"
+	done
+	echo "Reverse string : $rev"
+==================//=============================================================
+
+Question.9]
+read -p "Enter size of string :" n
+	arr=();
+	arr1=();
+	for (( i=0;i<n;i++ ))
+	do
+		read -p "Enter $i th String : " arr[$i]
+		#read arr[$i]
+		#revstr=${arr[i]} | rev
+		#$arr1[$i]=( $arr[@] $revstr )
+	done
+
+	echo "list : ${arr[@]}"
+	#arr1=${arr[@]}
+	echo "${arr[@]}" | rev
+	
+===========================//================================================
+Question.10]
+echo "Enter number : "
+	read num
+	len=${#num}
+	# echo "$len"
+	rem=0
+	sum=0
+	while [ $num -gt 0 ]
+	do
+		rev=$((num % 10))
+	#       echo "rev1 = $rev"
+		sum=$(( rev + sum * 10 ))
+	#       echo "sum1 = $sum"
+		num=$((num / 10 ))
+	#       echo "num1 = $num"
+	done
+	echo "reverse number : $sum"
+=========================//========================================================
+1]
+echo "enter password : "
+	read pass
+	len=${#pass}
+	echo $len
+	if [ $len -gt 8 ];then
+	echo $pass | grep "[A-Z]" | grep "[a-z]" | grep "[0-9]" | grep "[@#$^&*]"
+	if [[ $? -ne 0 ]];then
+		echo "weak password"
+	else
+		echo "ok"
+	fi
+	else
+		echo "Weak password"
+	fi
+================//====================================================================
+
+
+
+
+
+
+
+
+
+
+___________________++++++++++++++++++++++++++++++++_______________
+
