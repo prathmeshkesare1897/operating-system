@@ -1,0 +1,22 @@
+Q1]
+
+#include<iostream>
+#include<sys/types.h>
+#include<unistd.h>
+using namespace std;
+
+int main()
+{
+        pid_t pid;
+        pid=fork();
+        if( pid == 0 ){
+                cout<<"this is child process : "<<getpid()<<endl;
+        }else if( pid > 0 ){
+                cout<<"this is parent process : "<<getppid()<<endl;
+                cout<<"Child Exiting....."<<endl;
+        }
+        else{
+                cout<<"process is not created";
+        }
+        return 0;
+}
